@@ -9,8 +9,18 @@ mode_reg =
   create: -> bundle_load('python_mode')
 
 howl.mode.register mode_reg
+howl.inspection.register {
+  name: 'pycodestyle'
+  factory: -> {
+    cmd: 'pycodestyle <file>'
+    type: 'warning'
+    is_available: -> howl.sys.find_executable('pycodestyle'), '`pycodestyle` command not found'
+  }
+}
 
-unload = -> howl.mode.unregister 'python'
+unload = ->
+  howl.mode.unregister 'python'
+  howl.inspection.unregister 'pycodestyle'
 
 return {
   info:

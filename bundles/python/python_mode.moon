@@ -7,6 +7,9 @@
   comment_syntax: '#'
   word_pattern: r'\\b[\\pL_][\\pL\\pN_]+\\b'
 
+  default_config:
+    inspectors_on_idle: { 'pycodestyle' }
+
   indentation: {
     more_after: {
       ':%s*$',
